@@ -125,9 +125,9 @@ GuiMenu::GuiMenu(Window *window) : GuiComponent(window), mMenu(window, _("MAIN M
 	{
 		addEntry(_("UPDATES & DOWNLOADS"), true, [this] { openUpdatesSettings(); }, "iconUpdates");
 		addEntry(_("SYSTEM SETTINGS").c_str(), true, [this] { openSystemSettings_batocera(); }, "iconSystem");
-	}
-	else
 		addEntry(_("INFORMATIONS").c_str(), true, [this] { openSystemInformations_batocera(); }, "iconSystem");
+
+	}
 
 #ifdef WIN32
 	addEntry(_("QUIT").c_str(), false, [this] { openQuitMenu_batocera(); }, "iconQuit");
@@ -2927,19 +2927,7 @@ void GuiMenu::openQuitMenu_batocera_static(Window *window, bool forceWin32Menu)
 	}, "iconFastShutdown");
 #endif
 
-#ifdef WIN32
-	if (Settings::getInstance()->getBool("ShowExit"))
-	{
-		s->addEntry(_("QUIT EMULATIONSTATION"), false, [window] {
-			window->pushGui(new GuiMsgBox(window, _("REALLY QUIT?"), _("YES"),
-				[] 
-			{
-				Scripting::fireEvent("quit");
-				quitES("");
-			}, _("NO"), nullptr));
-		}, "iconQuit");
-	}
-#endif
+
 
 	if (forceWin32Menu)
 		s->getMenu().animateTo(Vector2f((Renderer::getScreenWidth() - s->getMenu().getSize().x()) / 2, (Renderer::getScreenHeight() - s->getMenu().getSize().y()) / 2));
