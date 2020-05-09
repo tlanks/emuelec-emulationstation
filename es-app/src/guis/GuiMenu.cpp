@@ -513,7 +513,7 @@ void GuiMenu::addVersionInfo()
 	mVersion.setLineSpacing(0);
 	if (!ApiSystem::getInstance()->getVersion().empty())
 #ifdef _ENABLEEMUELEC	
-		mVersion.setText("Test ES V" + ApiSystem::getInstance()->getVersion() + buildDate + " IP:" + getShOutput(R"(/storage/.emulationstation/scripts/ip.sh)"));
+		mVersion.setText(" ES FOR TITAN BOX V" + ApiSystem::getInstance()->getVersion() + buildDate + " IP:" + getShOutput(R"(/storage/.emulationstation/scripts/ip.sh)"));
 #else
 		mVersion.setText("BATOCERA.LINUX ES V" + ApiSystem::getInstance()->getVersion() + buildDate);
 #endif
@@ -2880,16 +2880,17 @@ void GuiMenu::openQuitMenu_batocera_static(Window *window, bool forceWin32Menu)
 	}
 	
 #ifdef _ENABLEEMUELEC
+/*
 	s->addEntry(_("RESTART EMULATIONSTATION"), false, [window] {
 		window->pushGui(new GuiMsgBox(window, _("REALLY RESTART EMULATIONSTATION?"), _("YES"),
 			[] {
     		   /*runSystemCommand("systemctl restart emustation.service");*/
+			   /*
     		   Scripting::fireEvent("quit", "restart");
 			   quitES("");
 		}, _("NO"), nullptr));
 	}, "iconRestart");
-
-
+*/
 	
 
 
